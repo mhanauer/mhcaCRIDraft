@@ -13,9 +13,10 @@ Test subset between month May and July
 setwd("C:/Users/Matthew.Hanauer/Desktop")
 MHCA = read.csv("20180627152112-SurveyExport.csv", header = TRUE)
 head(MHCA)
-MHCA$Time.Started = as.Date(MHCA$Time.Started)
-MHCA = subset(MHCA, Time.Started >  )
-dim(MHCA)
+MHCA = separate(data = MHCA, col = Date.Submitted, c("Date", "Extra"), sep = " ")
+MHCA$Date = as.Date(MHCA$Date, format = "%m/%d/%Y")
+MHCA = subset(MHCA, Date > "2017-05-11")
+
 ```
 
 
